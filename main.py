@@ -21,3 +21,13 @@ def obtener_mensaje(id: int):
         if mensaje["id"] == id:
             return mensaje
     return {"error": "mensaje no encontrado"}
+
+@app.post("/mensajes", response_model=Mensaje)
+def crear_mensaje(mensaje: Mensaje):
+    mensaje.id = len(mensajes) + 1
+    mensajes.append(mensaje)
+    return mensaje 
+
+
+
+    
