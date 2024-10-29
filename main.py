@@ -28,6 +28,13 @@ def crear_mensaje(mensaje: Mensaje):
     mensajes.append(mensaje)
     return mensaje 
 
+app.put("/mensajes/{id}", response_model=Mensaje)
+def actualizar_mensaje(mensaje_id : int, mensaje: Mensaje):
+    for index, mensaje in enumerate(mensajes):
+        if mensaje.id == mensaje_id:
+            mensajes[index].update(mensaje)
+            return mensajes[index]
+    return {"error": "mensaje no encontrado"}
 
 
     
